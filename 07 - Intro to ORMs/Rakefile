@@ -1,0 +1,12 @@
+require_relative 'config/environment'
+
+desc 'Loads up a console!'
+task :console do
+  Pry.start
+end
+
+
+desc 'says hello puppy style'
+task :hello do
+  puts "WOOF"
+end
