@@ -1,0 +1,8 @@
+<h1>ALL DA BOOKS</h1>
+<% @Books.each do | book | %>
+<div>
+   <strong> <%= book.title %> </strong> by
+    <%= book.author %> is about
+    <%= book.snippet %>
+</div>
+<% end %>

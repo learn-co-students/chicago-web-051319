@@ -1,0 +1,6 @@
+<form action="/books/<%= @Book.id %>" method="post">
+    Title: <input name="title" value="<%= @Book.title %>" />
+    Author: <input name="author" value="<%= @Book.author %>"  />
+    Snippet: <input name="snippet" value="<%= @Book.snippet %>" />
+    <input type="submit" value="submit" />
+</form>
