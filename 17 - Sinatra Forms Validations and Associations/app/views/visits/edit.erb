@@ -1,0 +1,25 @@
+<h1>REWRITE YOUR PAST. FIX THE FUTURE.</h1>
+
+<form class="edit-visit-form" action="/visits/<%= @visit.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <textarea rows="4" cols="50" name="visit[reflection]"><%= @visit.reflection %></textarea>
+  Choose Landmark:
+  <select name="visit[landmark_id]">
+    <% @landmarks.each do |landmark| %>
+      <option value="<%= landmark.id %>"><%= landmark.name %></option>
+    <% end %>
+  </select>
+  Choose Book:
+  <select name="visit[book_id]">
+    <% @books.each do |book| %>
+      <option value="<%= book.id %>"><%= book.title %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Update Visit">
+</form>
+<br>
+<br>
+<br>
+
+<p>FOOTER GOETH HERE</p>

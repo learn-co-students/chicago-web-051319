@@ -1,0 +1,5 @@
+<h1>What some long, strange trips have been...</h1>
+<p><a href="/visits/new">Reflect on New Visit</a></p>
+<% @visits.each do |visit| %>
+  <p>I went to <%= visit.landmark.name %> with a copy of <%= visit.book.title %> and I was all like <%= visit.reflection %>...<a href="/visits/<%= visit.id %>">More Options</a></p>
+<% end %>

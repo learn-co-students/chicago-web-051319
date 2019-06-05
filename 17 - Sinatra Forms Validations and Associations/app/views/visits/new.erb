@@ -1,0 +1,25 @@
+<h1>Hope You Enjoyed Your Visit...care to share how much?</h1>
+
+<form class="new-visit-form" action="/visits" method="post">
+  <textarea rows="4" cols="50" name="visit[reflection]" placeholder="please fill out some thoughts here"></textarea>
+  Choose Landmark:
+  <select name="visit[landmark_id]">
+    <% @landmarks.each do |landmark| %>
+      <option value="<%= landmark.id %>"><%= landmark.name %></option>
+    <% end %>
+  </select>
+  Choose Book:
+  <select name="visit[book_id]">
+    <% @books.each do |book| %>
+      <option value="<%= book.id %>"><%= book.title %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Create Visit">
+</form>
+
+<br>
+<br>
+<br>
+
+<p>FOOTER GOETH HERE</p>

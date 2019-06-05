@@ -1,0 +1,11 @@
+<p><a href="/landmarks/new">Make a New Landmark</a></p>
+<br>
+<% @landmarks.each do |landmark| %>
+  <div class="landmark-info" style="background:lime;">
+    <p><a href="/landmarks/<%= landmark.id %>">Visit <%= landmark.name %>!!</a></p>
+    <p>Located at <%= landmark.location %></p>
+    <p>Max capacity: <%= landmark.max_capacity %></p>
+  </div>
+  <br>
+  <br>
+<% end %>
