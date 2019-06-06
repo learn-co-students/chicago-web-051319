@@ -4,3 +4,8 @@
 <%= @visit.landmark.name %>
 
 <a href="/visits/<%= @visit.id %>/edit">Edit This Visit</a>
+
+<form class="delete-visit" action="/visits/<%= @visit.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input class="button-as-link" type="submit" value="Delete This Visit">
+</form>

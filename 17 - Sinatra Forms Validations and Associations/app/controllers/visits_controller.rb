@@ -10,6 +10,7 @@ class VisitsController < ApplicationController
   get '/visits/new' do
     @landmarks = Landmark.all
     @books = Book.all
+    @errors = []
     erb :'visits/new'
   end
 
@@ -30,19 +31,36 @@ class VisitsController < ApplicationController
   # Do the actual creation of new visit in DB
   post '/visits' do
     p params
+    # When the form fields were named reflection, book_id, etc, we had to call:
     # new_visit = Visit.new(reflection: params[:reflection], book_id: params[:book_id], landmark_id: params[:landmark_id])
-    new_visit = Visit.new(params[:visit])
-    new_visit.save
 
-    redirect '/visits/'
+    # But now the fields are named visit[reflection], visit[book_id], etc, so we can call:
+    new_visit = Visit.new(params[:visit])
+
+    # The last line should work, but the next line might not. When would the visit not save?
+    if new_visit.save
+      redirect '/visits/'
+    else
+      @errors = new_visit.errors.full_messages
+      @landmarks = Landmark.all
+      @books = Book.all
+      erb :'visits/new'
+    end
   end
 
   patch '/visits/:id' do
     find_visit
 
-    @visit.update(params[:visit])
+    @visit.assign_attributes(params[:visit])
+    @visit.save
 
     redirect "/visits/#{@visit.id}"
+  end
+
+  delete '/visits/:id' do
+    find_visit
+    @visit.delete
+    redirect '/visits'
   end
 
   def find_visit

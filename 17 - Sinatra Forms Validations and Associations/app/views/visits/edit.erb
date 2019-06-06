@@ -3,23 +3,24 @@
 <form class="edit-visit-form" action="/visits/<%= @visit.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
   <textarea rows="4" cols="50" name="visit[reflection]"><%= @visit.reflection %></textarea>
-  Choose Landmark:
+  <br>
+  <span>Choose Landmark:</span>
   <select name="visit[landmark_id]">
     <% @landmarks.each do |landmark| %>
-      <option value="<%= landmark.id %>"><%= landmark.name %></option>
+      <option value="<%= landmark.id %>" <%= @visit.landmark.id == landmark.id ? "selected='selected'" : ""%>><%= landmark.name %></option>
     <% end %>
   </select>
-  Choose Book:
+  <br>
+  <span>Choose Book:</span>
   <select name="visit[book_id]">
     <% @books.each do |book| %>
-      <option value="<%= book.id %>"><%= book.title %></option>
+      <option value="<%= book.id %>" <%= @visit.book.id == book.id ? "selected='selected'" : ""%>><%= book.title %></option>
     <% end %>
   </select>
-
+  <br>
   <input type="submit" value="Update Visit">
 </form>
 <br>
 <br>
 <br>
-
-<p>FOOTER GOETH HERE</p>
+<p><a href="/landmarks">Back to Landmarks</a></p>

@@ -1,9 +1,39 @@
+<% if @errors %>
+  <% @errors.each do |error_message| %>
+    <p class="error"><%= error_message %></p>
+  <% end %>
+<% end %>
+
 <form class="landmark-form" action="/landmarks" method="post">
-  <label for="name">Name:</label>
-  <input type="text" name="name" placeholder="e.g. Eiffel Tower">
-  <label for="location">Location:</label>
-  <input type="text" name="location" placeholder="e.g. Paris, France">
-  <label for="max_capacity">Max Capacity:</label>
-  <input type="number" name="max_capacity" placeholder="e.g. 1000">
+  <!-- Fields for landmark -->
+  <label for="landmark[name]">Name:</label>
+  <input type="text" name="landmark[name]" placeholder="e.g. Eiffel Tower">
+  <br>
+  <label for="landmark[location]">Location:</label>
+  <input type="text" name="landmark[location]" placeholder="e.g. Paris, France">
+  <br>
+  <label for="landmark[max_capacity]">Max Capacity:</label>
+  <input type="number" name="landmark[max_capacity]" placeholder="e.g. 1000">
+  <br>
+
+  <!-- Fields for visit -->
+  <p><em>Did you visit this place already? Did you read something there? If you'd like, you can let us know right now, nested-ly!</em></p>
+  <label for="visit[book_id]">Select your Book: </label>
+  <select name="visit[book_id]">
+    <% @books.each do |book| %>
+      <option value="<%= book.id %>"><%= book.title %></option>
+    <% end %>
+  </select>
+  <br>
+  <label for="visit[reflection]">What was on your mind? </label>
+  <br>
+  <textarea name="visit[reflection]" rows="4" cols="50" placeholder="Share your reflection here!"></textarea>
+  <br>
+
   <input type="submit" value="Create Landmark">
 </form>
+<br>
+<br>
+<br>
+
+<p><a href="/landmarks">Back to Landmarks</a></p>

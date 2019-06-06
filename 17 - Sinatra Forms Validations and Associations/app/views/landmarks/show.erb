@@ -1,1 +1,11 @@
-<%= @landmark.name %>
+<h1><%= @landmark.name %> - <%= @landmark.location %></h1>
+
+<p><strong>CAPACITY WARNING: You can't get in if <%= @landmark.max_capacity %> people are already there.</strong></p>
+
+<h2>Visitors have left the following reflections at this landmark:</h2>
+
+<% @landmark.visits.each do |visit| %>
+  <p><em><%= visit.reflection %></em> (left while reading a copy of <%= visit.book.title %>)</p>
+<% end %>
+
+<p><a href="/landmarks">Back to Landmarks</a></p>
