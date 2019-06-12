@@ -1,0 +1,19 @@
+<% if @errors %>
+  <% @errors.each do |error_msg| %>
+    <p><%= error_msg %></p>
+  <% end %>
+<% end %>
+
+<%= form_for(@student) do |f| %>
+  Name: <%= f.text_field :name %>
+  Cohort: <%= f.collection_select :cohort_id, @cohorts, :id, :name, { :selected => @cohort.try(:id) } %>
+  <br>
+  <%= f.fields_for :textbooks do |textbooks_form| %>
+    Textbook title: <%= textbooks_form.text_field :title %>
+    <br>
+    Vandalized? (True/false): <%= textbooks_form.text_field :vandalized %>
+    <br>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,15 @@
+<h1>Cohorts</h1>
+<nav>
+  <ul>
+    <li>
+      <%= link_to("Create new cohort", new_cohort_path) %>
+    </li>
+  </ul>
+</nav>
+<ul>
+  <% @cohorts.each do |cohort| %>
+    <li>
+      <a href="/cohorts/<%= cohort.id %>"><%= cohort.name %></a>
+    </li>
+  <% end %>
+</ul>
