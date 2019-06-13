@@ -1,0 +1,15 @@
+<h1>Edit This Tool</h1>
+
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
+<%= form_for @tool do |f| %>
+  <%= f.label :name %>
+  <p><%= f.text_field :name %></p>
+  <%= f.label :condition %>
+  <p><%= f.text_field :condition %></p>
+  <%= f.collection_select :user_id, @users, :id, :name %>
+  <%= f.submit "I DO think so Tim" %>
+<% end %>
