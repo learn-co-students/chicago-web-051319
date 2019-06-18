@@ -1,0 +1,8 @@
+<h1>A profile for <%= @user.username %></h1>
+<h3><em>logged on as <%= @current_user.try(:username) %></em></h3>
+
+<% if logged_in? %>
+  <%= button_to "Logout", "/logout", method: :delete %>
+<% else %>
+  <%= button_to "Login", "/login", method: :get %>
+<% end %>

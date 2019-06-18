@@ -1,0 +1,17 @@
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
+
+<%= form_for @user do |form| %>
+  <%= form.label :username %>
+  <%= form.text_field :username %>
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+  <%= form.label :password_confirmation %>
+  <%= form.password_field :password_confirmation %>
+  <%= form.submit "Create Account" %>
+<% end %>
+
+<%= link_to "Already have an account? log in", login_path %>
